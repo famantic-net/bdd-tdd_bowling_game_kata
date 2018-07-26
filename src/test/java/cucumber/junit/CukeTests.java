@@ -1,0 +1,15 @@
+package cucumber.junit;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        features = "classpath:features",
+        tags = {"not @ScenarioWorld", "@BowlingGame"},
+        glue = "cucumber/steps"
+)
+public class CukeTests {
+
+}
