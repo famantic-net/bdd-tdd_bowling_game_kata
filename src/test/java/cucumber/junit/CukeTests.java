@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "classpath:features",
-        tags = {"not @ScenarioWorld", "@BowlingGame"},
+        tags = {"@BowlingGame"},
         glue = "cucumber/steps"
 )
 public class CukeTests {
