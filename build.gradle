@@ -2,10 +2,9 @@
 plugins {
     id 'java'
     id "com.commercehub.cucumber-jvm" version "0.14"
-    //id "com.jaredsburrows.checkerframework" version "0.2.1"
 }
 
-group 'lambdaAgain'
+group 'BDD-TDD-BowlinGameKata'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8

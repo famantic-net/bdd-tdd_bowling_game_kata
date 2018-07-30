@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lambdaAgain.iml" filepath="$PROJECT_DIR$/.idea/modules/lambdaAgain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lambdaAgain_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lambdaAgain_main.iml" group="lambdaAgain" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lambdaAgain_test.iml" filepath="$PROJECT_DIR$/.idea/modules/lambdaAgain_test.iml" group="lambdaAgain" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BDD-TDD-BowlinGameKata.iml" filepath="$PROJECT_DIR$/.idea/modules/BDD-TDD-BowlinGameKata.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BDD-TDD-BowlinGameKata_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BDD-TDD-BowlinGameKata_main.iml" group="BDD-TDD-BowlinGameKata" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BDD-TDD-BowlinGameKata_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BDD-TDD-BowlinGameKata_test.iml" group="BDD-TDD-BowlinGameKata" />
     </modules>
   </component>
 </project>
