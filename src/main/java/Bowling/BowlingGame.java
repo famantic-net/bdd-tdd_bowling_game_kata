@@ -13,7 +13,7 @@ public class BowlingGame {
     private int frameNumber = 0;
     private int score = 0;
     List<BowlingFrame> frameSet = new ArrayList<BowlingFrame>();
-    private BowlingFrame currentFrame, prevFrame;
+    private BowlingFrame currentFrame, prev1Frame, prev2Frame;
 
 
     public int getScore() {
@@ -31,14 +31,23 @@ public class BowlingGame {
 
     public void roll(int pins) {
         if (frameIsFinished()) {
-            prevFrame = currentFrame;
+            prev2Frame = prev1Frame;
+            prev1Frame = currentFrame;
             currentFrame = new BowlingFrame();
             frameSet.add(currentFrame);
             frameNumber++;
         }
-        if (!(prevFrame == null)) {
-            if ((prevFrame.isSpare() | prevFrame.isStrike()) & isFirstRoll()) {
-                prevFrame.addScore(pins);
+        if (!(prev1Frame == null)) {
+            if ((prev1Frame.isSpare() | prev1Frame.isStrike()) & isFirstRoll()) {
+                prev1Frame.addScore(pins);
+            }
+            if (prev1Frame.isStrike() & isSecondRoll()) {
+                prev1Frame.addScore(pins);
+            }
+        }
+        if (!(prev2Frame == null)) {
+            if (prev2Frame.isStrike() & prev1Frame.isStrike() & isFirstRoll()) {
+                prev2Frame.addScore(pins);
             }
         }
         currentFrame.add(pins);
@@ -55,7 +64,7 @@ public class BowlingGame {
     private boolean frameIsFinished() {
         boolean finished = false;
 
-        if (frameSet.size() < 10 & currentFrame.rolls.size() == 2) {
+        if (frameSet.size() < 10 & (currentFrame.isStrike() | currentFrame.rolls.size() == 2)) {
             finished = true;
         }
         else if (frameSet.size() == 10) {
