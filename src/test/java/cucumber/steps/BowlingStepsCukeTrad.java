@@ -1,19 +1,14 @@
 package cucumber.steps;
 
-import Bowling.BowlingGame;
-import BowlingGameTests.TestBowlingSuite;
-import cucumber.api.DataTable;
-import cucumber.api.PendingException;
-import cucumber.api.java.en.Then;
+import bowling.BowlingGame;
+import bowlingtests.TestBowlingSuite;
 import cucumber.api.java.en.When;
-import cucumber.api.java.sl.In;
 import cucumber.api.java8.En;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
 
 import static org.junit.Assert.assertEquals;
 

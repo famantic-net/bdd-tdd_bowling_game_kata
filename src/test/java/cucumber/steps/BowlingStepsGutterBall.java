@@ -1,9 +1,8 @@
 package cucumber.steps;
 
-import BowlingGameTests.TestBowlingSuite;
-import cucumber.api.PendingException;
+import bowlingtests.TestBowlingSuite;
 import cucumber.api.java8.En;
-import Bowling.BowlingGame;
+import bowling.BowlingGame;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;

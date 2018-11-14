@@ -1,10 +1,8 @@
-package BowlingGameTests;
+package bowlingtests;
 
-import Bowling.BowlingFrame;
-import Bowling.BowlingGame;
+import bowling.BowlingGame;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
