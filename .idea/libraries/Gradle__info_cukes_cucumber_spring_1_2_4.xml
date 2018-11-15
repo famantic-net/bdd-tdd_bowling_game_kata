@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: info.cukes:cucumber-spring:1.2.4">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-spring/1.2.4/cucumber-spring-1.2.4.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
