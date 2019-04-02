@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        plugin = {"io.cucumber.pro.JsonReporter:aggregate"},
         features = "classpath:features",
         tags = {"@BowlingGame"},
         glue = "cucumber.steps"
