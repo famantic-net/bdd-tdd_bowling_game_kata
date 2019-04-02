@@ -1,7 +1,6 @@
 
 plugins {
     id 'java'
-    id "com.commercehub.cucumber-jvm" version "0.14"
 }
 
 group 'BDD-TDD-BowlinGameKata'

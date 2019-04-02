@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "classpath:features",
         tags = {"@BowlingGame"},
-        glue = "cucumber/steps"
+        glue = "cucumber.steps"
 )
 public class CukeTests {
 
