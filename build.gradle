@@ -23,25 +23,7 @@ dependencies {
     )
     testCompile(
             'junit:junit:4.12',
-            //'info.cukes:cucumber-java:1.2.4',
-            //'info.cukes:cucumber-junit:1.2.4',
-//            'io.cucumber:cucumber-java8:2.+',
-//            'io.cucumber:cucumber-junit:2.+',
-            //'io.cucumber:cucumber-java:3.0.2',
-            //'io.cucumber:cucumber-junit:3.0.2',
-//            'info.cukes:cucumber-spring:1.2.4',
-//            'org.springframework:spring-context:4.2.5.RELEASE',
-//            'org.springframework:spring-test:4.2.5.RELEASE',
-//            'org.springframework:spring-tx:4.2.5.RELEASE',
-
     )
-//    testImplementation(
-//            'org.junit.jupiter:junit-jupiter-api:5.1.0'
-//    )
-//    testRuntimeOnly(
-//            'org.junit.jupiter:junit-jupiter-engine:5.1.0',
-//            'org.junit.vintage:junit-vintage-engine:5.1.0'
-//    )
 }
 
 
