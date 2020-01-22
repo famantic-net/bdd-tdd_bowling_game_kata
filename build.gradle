@@ -14,8 +14,8 @@ repositories {
 
 dependencies {
     compile(
-            'io.cucumber:cucumber-java8:2.+',
-            'io.cucumber:cucumber-junit:2.+',
+            'io.cucumber:cucumber-java8:2.3.1',
+            'io.cucumber:cucumber-junit:2.3.1',
             'info.cukes:cucumber-spring:1.2.4',
             'org.springframework:spring-context:4.2.5.RELEASE',
             'org.springframework:spring-test:4.2.5.RELEASE',
@@ -29,7 +29,7 @@ dependencies {
 
 task bddTest(type: Test) {
     group = LifecycleBasePlugin.VERIFICATION_GROUP
-    description = 'Runs the aggregation tests.'
+    description = 'Runs the Cucumber tests.'
     dependsOn assemble, compileJava, compileTestJava
     doLast {
         javaexec {
