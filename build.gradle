@@ -14,16 +14,15 @@ repositories {
 
 dependencies {
     compile(
-            'io.cucumber:cucumber-java8:2.+',
-            'io.cucumber:cucumber-junit:2.+',
-            'info.cukes:cucumber-spring:1.2.4',
+            'io.cucumber:cucumber-java:6.8.2',
+            'io.cucumber:cucumber-junit:6.8.2',
+            'info.cukes:cucumber-spring:6.8.2',
             'org.springframework:spring-context:4.2.5.RELEASE',
             'org.springframework:spring-test:4.2.5.RELEASE',
             'org.springframework:spring-tx:4.2.5.RELEASE',
     )
     testCompile(
             'junit:junit:4.12',
-            'io.cucumber:pro-plugin:2.1.1'
     )
 }
 
@@ -36,7 +35,6 @@ task bddTest(type: Test) {
             main = "cucumber.api.cli.Main"
             classpath = configurations.testRuntime + sourceSets.main.output + sourceSets.test.output
             args = ['--plugin', 'pretty',
-                    '--plugin', 'io.cucumber.pro.JsonReporter:bdd-tdd-bowling-game-kata',
                     '--glue', 'cucumber.steps', 'src/test/resources',
             ]
         }
