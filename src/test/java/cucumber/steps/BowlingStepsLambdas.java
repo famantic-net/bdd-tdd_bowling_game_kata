@@ -2,16 +2,19 @@ package cucumber.steps;
 
 import bowling.BowlingGame;
 import bowlingtests.TestBowlingSuite;
-import cucumber.api.java8.En;
+import io.cucumber.java8.En;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.assertEquals;
 
 
+//@SpringBootTest
 public class BowlingStepsLambdas implements En {
 
     @Autowired
-    BowlingGame game;
+    BowlingGame game = new BowlingGame();
 
     public BowlingStepsLambdas() {
         TestBowlingSuite suite = new TestBowlingSuite();
@@ -24,7 +27,7 @@ public class BowlingStepsLambdas implements En {
             suite.rollFrame(game, pins,0);
         });
 
-        When("^First roll is a srike$", () -> {
+        When("^First roll is a strike$", () -> {
             game.roll(10);
         });
 

@@ -2,9 +2,11 @@ package cucumber.steps;
 
 import bowling.BowlingGame;
 import bowlingtests.TestBowlingSuite;
-import cucumber.api.java.en.When;
-import cucumber.api.java8.En;
+import io.cucumber.java.en.When;
+import io.cucumber.datatable.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,28 +14,18 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-
-public class BowlingStepsCukeTrad implements En {
+//@SpringBootTest
+public class BowlingStepsCukeTrad {
 
     @Autowired
-    BowlingGame game;
+    BowlingGame game = new BowlingGame();
 
     @When("^Play is$")
-    public void randomPlay(List<String> frameSet) {
-        System.out.println("Play: " + frameSet + "\n");
-        TestBowlingSuite suite = new TestBowlingSuite();
-        List<Integer> rolls = new ArrayList<>();
-        for (String frame : frameSet) {
-            List<String> frameRolls = Arrays.asList(frame.split("\\s*,\\s*"));
-            for (String roll : frameRolls) {
-                if (!(roll.matches(".*?null.*?"))) {
-                    roll = roll.replace("[", "").replace("]", "");
-                    rolls.add(Integer.parseInt(roll));
-                }
-            }
-        }
-        suite.randomGame(game, rolls);
-
+    public void randomPlayRow(DataTable table) {
+        //List<String> frameSet = (List<String>) table.getTableConverter();
+        List<List<String>> frameSetList = table.asLists(String.class);
+        List<String> frameSet = frameSetList.get(0);
+        randomPlay(frameSet);
     }
 
     @When("^Play is (\\d+),?(\\d+)? (\\d+),?(\\d+)? (\\d+),?(\\d+)? (\\d+),?(\\d+)? (\\d+),?(\\d+)? (\\d+),?(\\d+)? (\\d+),?(\\d+)? (\\d+),?(\\d+)? (\\d+),?(\\d+)? (\\d+),(\\d+),?(\\d+)?$")
@@ -62,6 +54,26 @@ public class BowlingStepsCukeTrad implements En {
     ) {
         // Because cucumber can't handle varargs
         randomPlaySet(roll1, roll2, roll3, roll4, roll5, roll6, roll7, roll8, roll9, roll10, roll11, roll12, roll13, roll14, roll15, roll16, roll17, roll18, roll19, roll20, roll21);
+    }
+
+    public void randomPlay(List<String> frameSet) {
+        System.out.println("Play: " + frameSet + "\n");
+        TestBowlingSuite suite = new TestBowlingSuite();
+        List<Integer> rolls = new ArrayList<>();
+        for (String frame : frameSet) {
+            System.out.println("Played FRAME: " + frame + "\n");
+            List<String> frameRolls = Arrays.asList(frame.split("\\s*,\\s*"));
+            for (String roll : frameRolls) {
+                // if (!(roll.matches(".*?null.*?"))) {
+                //     roll = roll.replace("[", "").replace("]", "");
+                //     rolls.add(Integer.parseInt(roll));
+                // }
+                rolls.add(Integer.parseInt(roll));
+                System.out.println("Adding: " + Integer.parseInt(roll) + "\n");
+            }
+        }
+        suite.randomGame(game, rolls);
+
     }
 
     public void randomPlaySet(String... rolls) {
