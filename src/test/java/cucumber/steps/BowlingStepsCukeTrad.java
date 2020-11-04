@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 public class BowlingStepsCukeTrad {
 
     @Autowired
-    BowlingGame game = new BowlingGame();
+    BowlingGame game;
 
     @When("^Play is$")
     public void randomPlayRow(DataTable table) {

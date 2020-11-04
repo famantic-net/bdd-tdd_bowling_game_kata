@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class BowlingStepsLambdas implements En {
 
     @Autowired
-    BowlingGame game = new BowlingGame();
+    BowlingGame game;
 
     public BowlingStepsLambdas() {
         TestBowlingSuite suite = new TestBowlingSuite();
