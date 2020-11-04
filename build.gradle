@@ -11,6 +11,8 @@ repositories {
     mavenCentral()
 }
 
+apply plugin: 'eclipse'
+
 dependencies {
     compile(
             'io.cucumber:cucumber-java:6.8.2',
