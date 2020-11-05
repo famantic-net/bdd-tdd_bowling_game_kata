@@ -1,20 +1,18 @@
-package cucumber.steps;
+package bowling;
 
-import bowling.BowlingGame;
-import bowlingtests.TestBowlingSuite;
 import io.cucumber.java.en.When;
 import io.cucumber.datatable.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
 
-//@SpringBootTest
+@SpringBootTest
 public class BowlingStepsCukeTrad {
 
     @Autowired
@@ -64,12 +62,15 @@ public class BowlingStepsCukeTrad {
             System.out.println("Played FRAME: " + frame + "\n");
             List<String> frameRolls = Arrays.asList(frame.split("\\s*,\\s*"));
             for (String roll : frameRolls) {
-                // if (!(roll.matches(".*?null.*?"))) {
-                //     roll = roll.replace("[", "").replace("]", "");
-                //     rolls.add(Integer.parseInt(roll));
-                // }
-                rolls.add(Integer.parseInt(roll));
-                System.out.println("Adding: " + Integer.parseInt(roll) + "\n");
+                if (Pattern.matches(".*null.*", roll)) {
+                    continue;
+                }
+                else {
+                    if (Pattern.matches("[^\\d]\\d+", roll) || Pattern.matches("\\d+[^\\d]", roll)) {
+                        roll = roll.replace("[", "").replace("]", "");
+                    }
+                    rolls.add(Integer.parseInt(roll));
+                }
             }
         }
         suite.randomGame(game, rolls);

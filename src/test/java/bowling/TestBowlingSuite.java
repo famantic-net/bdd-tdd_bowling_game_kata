@@ -1,6 +1,5 @@
-package bowlingtests;
+package bowling;
 
-import bowling.BowlingGame;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,6 +8,12 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
+
+@Component
+@Scope(SCOPE_CUCUMBER_GLUE)
 public class TestBowlingSuite {
 
     @Test

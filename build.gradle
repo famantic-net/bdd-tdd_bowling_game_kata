@@ -1,34 +1,33 @@
-
 plugins {
     id 'java'
 }
 
-group 'BDD-TDD-BowlinGameKata'
-
-sourceCompatibility = 1.8
-
 repositories {
-    mavenCentral()
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
 }
-
-apply plugin: 'eclipse'
 
 dependencies {
     compile(
-            'io.cucumber:cucumber-java:6.8.2',
-            'io.cucumber:cucumber-java8:6.8.2',
-            'io.cucumber:cucumber-junit:6.8.2',
+            'org.springframework.boot:spring-boot-autoconfigure:2.3.5.RELEASE',
             'io.cucumber:cucumber-spring:6.8.2',
-            'org.springframework:spring-context:5.3.0',
-            'org.springframework:spring-beans:5.3.0',
-            'org.springframework:spring-tx:5.3.0',
     )
-    testCompile(
-            'junit:junit:4.13.1',
-            'org.springframework:spring-test:5.3.0',
-            'org.springframework.boot:spring-boot-starter-test:2.3.5.RELEASE',
+    testImplementation (
+        'org.springframework.boot:spring-boot-starter-test:2.3.1.RELEASE',
+        'io.cucumber:cucumber-java:6.8.2',
+        'io.cucumber:cucumber-java8:6.8.2',
+        'io.cucumber:cucumber-junit-platform-engine:6.2.2',
+    )
+}
 
-    )
+group = 'bowling'
+description = 'BDD%TDD-Bowling-Game-Kata'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 configurations {
@@ -39,14 +38,14 @@ configurations {
 
 task bddTest {
     group = LifecycleBasePlugin.VERIFICATION_GROUP
-    description = 'Runs the aggregation tests.'
+    description = 'Runs the Cucumber tests.'
     dependsOn assemble, compileTestJava
     doLast {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
             args = ['--plugin', 'pretty',
-                    '--glue', 'cucumber.steps', 'src/test/resources',
+                    '--glue', 'bowling', 'src/test/resources',
             ]
         }
     }

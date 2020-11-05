@@ -1,5 +1,8 @@
+target/
+*.idea/
+*.iml
 out/**
-\.gradle/**
-\.idea/**
-lib/**
-build/**
+\.gradle/
+lib/
+build/
+tmp/

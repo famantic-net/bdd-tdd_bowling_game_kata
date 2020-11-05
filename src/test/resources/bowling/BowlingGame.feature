@@ -18,7 +18,7 @@ Feature: Testing bowling
 
   @BowlingGame
   Scenario: Game when first and second roll are strike and rest gutter balls
-    When First roll is a srike
+    When First roll is a strike
     And Second Roll is a strike
     And The rest from frame 3 are gutterballs
     Then Game score is 30

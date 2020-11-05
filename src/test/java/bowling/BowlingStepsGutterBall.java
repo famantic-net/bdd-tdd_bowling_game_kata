@@ -1,17 +1,17 @@
-package cucumber.steps;
+package bowling;
 
-import bowling.BowlingGame;
-import bowlingtests.TestBowlingSuite;
 import io.cucumber.java8.En;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.ApplicationContext;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.assertEquals;
 
-//@SpringBootTest
+@SpringBootTest
 public class BowlingStepsGutterBall implements En {
 
+    @Autowired
+    private ApplicationContext applicationContext;
     @Autowired
     BowlingGame bowlingGame;
 
