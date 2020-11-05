@@ -55,11 +55,11 @@ public class BowlingStepsCukeTrad {
     }
 
     public void randomPlay(List<String> frameSet) {
-        System.out.println("Play: " + frameSet + "\n");
+        //System.out.println("Play: " + frameSet + "\n");
         TestBowlingSuite suite = new TestBowlingSuite();
         List<Integer> rolls = new ArrayList<>();
         for (String frame : frameSet) {
-            System.out.println("Played FRAME: " + frame + "\n");
+            //System.out.println("Played FRAME: " + frame + "\n");
             List<String> frameRolls = Arrays.asList(frame.split("\\s*,\\s*"));
             for (String roll : frameRolls) {
                 if (Pattern.matches(".*null.*", roll)) {

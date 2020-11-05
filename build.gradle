@@ -15,10 +15,11 @@ dependencies {
             'io.cucumber:cucumber-spring:6.8.2',
     )
     testImplementation (
-        'org.springframework.boot:spring-boot-starter-test:2.3.1.RELEASE',
-        'io.cucumber:cucumber-java:6.8.2',
-        'io.cucumber:cucumber-java8:6.8.2',
-        'io.cucumber:cucumber-junit-platform-engine:6.2.2',
+            'org.springframework.boot:spring-boot-starter-test:2.3.1.RELEASE',
+            'io.cucumber:cucumber-junit:6.8.2',
+            'io.cucumber:cucumber-java:6.8.2',
+            'io.cucumber:cucumber-java8:6.8.2',
+            'io.cucumber:cucumber-junit-platform-engine:6.2.2',
     )
 }
 
@@ -45,6 +46,7 @@ task bddTest {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
             args = ['--plugin', 'pretty',
+                    '--publish',
                     '--glue', 'bowling', 'src/test/resources',
             ]
         }
