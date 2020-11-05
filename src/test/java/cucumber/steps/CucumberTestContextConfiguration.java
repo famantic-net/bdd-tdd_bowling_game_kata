@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 
 @CucumberContextConfiguration
-@ContextConfiguration
+@ContextConfiguration({"classpath:cucumber.xml"})
 public class CucumberTestContextConfiguration {
     @Before
     public void setup_cucumber_spring_context(){
