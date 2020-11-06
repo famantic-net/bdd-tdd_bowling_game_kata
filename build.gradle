@@ -46,6 +46,8 @@ task bddTest {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
             args = ['--plugin', 'pretty',
+                    '--plugin', 'json:build/reports/bddTest.json',
+                    '--plugin', 'message:build/reports/bddTest.ndjson',
                     '--publish',
                     '--glue', 'bowling', 'src/test/resources',
             ]
