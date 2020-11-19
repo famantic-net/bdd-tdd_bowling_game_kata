@@ -1,13 +1,12 @@
 package bowling;
 
 import bowling.BowlingFrame;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 @Component

@@ -4,6 +4,7 @@ import io.cucumber.java.en.When;
 import io.cucumber.datatable.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +16,8 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 public class BowlingStepsCukeTrad {
 
+    @Autowired
+    private ApplicationContext applicationContext;
     @Autowired
     BowlingGame game;
 
