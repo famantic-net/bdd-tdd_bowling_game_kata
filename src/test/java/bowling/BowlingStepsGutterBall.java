@@ -23,7 +23,7 @@ public class BowlingStepsGutterBall implements En {
         });
 
         Then("^Game score is zero$", () -> {
-            assertEquals(0,bowlingGame.getScore());
+            assertEquals(1,bowlingGame.getScore());
         });
 
     }

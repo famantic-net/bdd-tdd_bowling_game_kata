@@ -1,0 +1,10 @@
+${bamboo_build_working_directory}
+
+$(bamboo_repository_revision_number}
+
+echo "Build dir contains:"
+ls -R -lFtr --time-style=long-iso ${bamboo_build_working_directory}
+echo "Posting ${bamboo_build_working_directory}/build/reports/bddTest.ndjson..."
+cat ${bamboo_build_working_directory}/build/reports/bddTest.ndjson
+echo curl -X POST -F messages=@${bamboo_build_working_directory}/build/reports/bddTest.ndjson https://bisazhiptest.bisnode.net/cucumber_project/results -H "project-access-token: 90813416792663906813989011279995939861154415316328075703" -H "provider: bitbucket_server" -H "repo: QA/bdd-tdd_bowling_game_kata" -H "branch: cukestudio-springboot" -H "revision: ${bamboo_repository_revision_number}"
+curl -X POST -F messages=@${bamboo_build_working_directory}/build/reports/bddTest.ndjson https://bisazhiptest.bisnode.net/cucumber_project/results -H "project-access-token: 90813416792663906813989011279995939861154415316328075703" -H "provider: bitbucket_server" -H "repo: QA/bdd-tdd_bowling_game_kata" -H "branch: cukestudio-springboot" -H "revision: ${bamboo_repository_revision_number}"
