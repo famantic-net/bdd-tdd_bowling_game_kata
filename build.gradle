@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile(
+    implementation(
             'org.springframework.boot:spring-boot-autoconfigure:2.3.5.RELEASE',
             'io.cucumber:cucumber-spring:6.8.2',
     )
@@ -23,7 +23,7 @@ dependencies {
     )
 }
 
-group = 'bowling'
+//group = 'bowling'
 description = 'BDD%TDD-Bowling-Game-Kata'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
