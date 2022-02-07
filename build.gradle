@@ -1,48 +1,56 @@
-
 plugins {
     id 'java'
 }
 
-group 'BDD-TDD-BowlinGameKata'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
 repositories {
-    mavenCentral()
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
 }
 
 dependencies {
-    compile(
-            'io.cucumber:cucumber-java8:2.+',
-            'io.cucumber:cucumber-junit:2.+',
-            'info.cukes:cucumber-spring:1.2.4',
-            'org.springframework:spring-context:4.2.5.RELEASE',
-            'org.springframework:spring-test:4.2.5.RELEASE',
-            'org.springframework:spring-tx:4.2.5.RELEASE',
+    implementation(
+            'org.springframework.boot:spring-boot-autoconfigure:2.3.5.RELEASE',
+            'io.cucumber:cucumber-spring:6.8.2',
     )
-    testCompile(
-            'junit:junit:4.12',
-            'io.cucumber:pro-plugin:2.1.1',
-            //'info.cukes:cucumber-java:1.2.4',
-            //'info.cukes:cucumber-junit:1.2.4',
-//            'io.cucumber:cucumber-java8:2.+',
-//            'io.cucumber:cucumber-junit:2.+',
-            //'io.cucumber:cucumber-java:3.0.2',
-            //'io.cucumber:cucumber-junit:3.0.2',
-//            'info.cukes:cucumber-spring:1.2.4',
-//            'org.springframework:spring-context:4.2.5.RELEASE',
-//            'org.springframework:spring-test:4.2.5.RELEASE',
-//            'org.springframework:spring-tx:4.2.5.RELEASE',
-
+    testImplementation (
+            'org.springframework.boot:spring-boot-starter-test:2.3.1.RELEASE',
+            'io.cucumber:cucumber-junit:6.8.2',
+            'io.cucumber:cucumber-java:6.8.2',
+            'io.cucumber:cucumber-java8:6.8.2',
+            'io.cucumber:cucumber-junit-platform-engine:6.2.2',
     )
-//    testImplementation(
-//            'org.junit.jupiter:junit-jupiter-api:5.1.0'
-//    )
-//    testRuntimeOnly(
-//            'org.junit.jupiter:junit-jupiter-engine:5.1.0',
-//            'org.junit.vintage:junit-vintage-engine:5.1.0'
-//    )
 }
 
+//group = 'bowling'
+description = 'BDD%TDD-Bowling-Game-Kata'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task bddTest {
+    group = LifecycleBasePlugin.VERIFICATION_GROUP
+    description = 'Runs the Cucumber tests.'
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty',
+                    '--plugin', 'json:build/reports/bddTest.json',
+                    '--plugin', 'message:build/reports/bddTest.ndjson',
+                    '--publish',
+                    '--glue', 'bowling', 'src/test/resources',
+            ]
+        }
+    }
+}

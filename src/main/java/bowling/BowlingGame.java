@@ -1,13 +1,17 @@
 package bowling;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import bowling.BowlingFrame;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 @Component
-@Scope("cucumber-glue")
+@Scope(SCOPE_CUCUMBER_GLUE)
+@SpringBootApplication
 public class BowlingGame {
 
     private int frameNumber = 0;
@@ -15,18 +19,17 @@ public class BowlingGame {
     List<BowlingFrame> frameSet = new ArrayList<BowlingFrame>();
     private BowlingFrame currentFrame, prev1Frame, prev2Frame;
 
+    public BowlingGame() {
+        currentFrame = new BowlingFrame();
+        frameSet.add(currentFrame);
+        frameNumber++;
+    }
 
     public int getScore() {
         for (BowlingFrame frame:frameSet) {
             score += frame.getScore();
         }
         return score;
-    };
-
-    public BowlingGame() {
-        currentFrame = new BowlingFrame();
-        frameSet.add(currentFrame);
-        frameNumber++;
     }
 
     public void roll(int pins) {
@@ -74,5 +77,4 @@ public class BowlingGame {
         }
         return finished;
     }
-
 }
