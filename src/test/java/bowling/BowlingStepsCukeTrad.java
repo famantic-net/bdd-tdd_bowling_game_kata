@@ -1,5 +1,6 @@
 package bowling;
 
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.datatable.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,47 @@ public class BowlingStepsCukeTrad {
     private ApplicationContext applicationContext;
     @Autowired
     BowlingGame game;
+
+    @When("^All balls miss all pins$")
+    public void allBallsMissAllPins() {
+        TestBowlingSuite suite = new TestBowlingSuite();
+        suite.testGutterGame(game);
+    }
+
+    @Then("^Game score is zero$")
+    public void GameScoreZero() {
+        assertEquals(0,game.getScore());
+    }
+
+    @When("^First frame is a spare$")
+    public void firstFrameIsSpare() {
+        TestBowlingSuite suite = new TestBowlingSuite();
+        suite.rollFrame(game,5,5);
+    }
+
+    @When("^Next roll is a (\\d+)$")
+    public void nextRoll(Integer pins) {
+        TestBowlingSuite suite = new TestBowlingSuite();
+        suite.rollFrame(game, pins,0);
+    }
+
+    @When("^First roll is a strike$")
+    public void firstRollIsSTrike() {
+        game.roll(10);
+    }
+
+    @When("^Second Roll is a strike$")
+    public void secondRollIsStrike() {
+        game.roll(10);
+    }
+
+    @When("^The rest from frame (\\d+) are gutterballs$")
+    public void restFromFrameXGutterballs(Integer frame) {
+        TestBowlingSuite suite = new TestBowlingSuite();
+        for (int j=frame-1; j<10; j++) {
+            suite.rollFrame(game,0,0);
+        }
+    }
 
     @When("^Play is$")
     public void randomPlayRow(DataTable table) {
@@ -55,6 +97,11 @@ public class BowlingStepsCukeTrad {
     ) {
         // Because cucumber can't handle varargs
         randomPlaySet(roll1, roll2, roll3, roll4, roll5, roll6, roll7, roll8, roll9, roll10, roll11, roll12, roll13, roll14, roll15, roll16, roll17, roll18, roll19, roll20, roll21);
+    }
+
+    @Then("^Game score is (\\d+)$")
+    public void gameScore(Integer score) {
+        assertEquals((int)score, (int)game.getScore());
     }
 
     public void randomPlay(List<String> frameSet) {
