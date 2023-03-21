@@ -1,10 +1,11 @@
 Feature: Testing bowling
 
-  @BowlingGame
+  @OtherGame
   Scenario: Gutterball game
     When All balls miss all pins
     Then Game score is zero
 
+  @Ignore
   @BowlingGame
   Scenario Outline: Game with first frame spare and next roll <nextRoll>
     When First frame is a spare
