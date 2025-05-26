@@ -1,2 +1,2 @@
 *.sh linguist-language=Shell
-*.feature linguist-language=Cucumber
+*.feature linguist-language=Gherkin
